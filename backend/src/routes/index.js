@@ -2,13 +2,13 @@
  * @format
  */
 
-import { Router } from "express";
+const express = require("express");
 
-const routes = Router();
+const routes = express.Router();
 
 // routes
 routes.get("/ping", (req, res) => {
   res.json({ text: "pong" });
 });
 
-export default routes;
+module.exports = routes;

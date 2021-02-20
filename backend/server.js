@@ -1,11 +1,10 @@
 /*
  * @format
  */
-import createError from "http-errors";
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
 
-import routes from "./src/routes";
+const routes = require("./src/routes");
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === "production";
 
@@ -24,11 +23,6 @@ if (!isProduction) {
 
 app.use("/api", routes);
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
 // error handler
 app.use((err, req, res, _next) => {
   // set locals, only providing error in development
@@ -46,4 +40,4 @@ app.listen(3005, () => {
   console.log("listening on port ", 3005);
 });
 
-export default app;
+// export default app;
