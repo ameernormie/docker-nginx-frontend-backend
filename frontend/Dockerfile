@@ -2,8 +2,8 @@ FROM node:12.18.2 as build
 
 WORKDIR /app
 
-COPY ./package.json /app/package.json
-COPY ./yarn.lock /app/yarn.lock
+COPY ./package.json .
+COPY ./yarn.lock .
 
 RUN yarn install
 
@@ -14,6 +14,9 @@ RUN yarn build
 
 FROM nginx
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+RUN mkdir /app
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/build /app
+
+# COPY --from=build /app/build /usr/share/nginx/html
