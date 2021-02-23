@@ -21,7 +21,7 @@ if (!isProduction) {
   );
 }
 
-app.use("/api", routes);
+app.use("/", routes);
 
 // error handler
 app.use((err, req, res, _next) => {
@@ -36,8 +36,8 @@ app.use((err, req, res, _next) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("listening on port ", 3000);
+app.listen(3001, () => {
+  console.log("listening on port ", 3001);
 });
 
 // export default app;
